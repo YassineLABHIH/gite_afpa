@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EquipementExt{% endblock %}
+
+{% block body %}
+    <h1>Create new EquipementExt</h1>
+
+    {{ include('equipement_ext/_form.html.twig') }}
+
+    <a href="{{ path('app_equipement_ext_index') }}">back to list</a>
+{% endblock %}

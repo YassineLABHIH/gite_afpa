@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EquipementExt index{% endblock %}
+
+{% block body %}
+    <h1>EquipementExt index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipement_ext in equipement_exts %}
+            <tr>
+                <td>{{ equipement_ext.id }}</td>
+                <td>{{ equipement_ext.name }}</td>
+                <td>
+                    <a href="{{ path('app_equipement_ext_show', {'id': equipement_ext.id}) }}">show</a>
+                    <a href="{{ path('app_equipement_ext_edit', {'id': equipement_ext.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_equipement_ext_new') }}">Create new</a>
+{% endblock %}

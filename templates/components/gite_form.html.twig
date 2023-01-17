@@ -1,0 +1,24 @@
+<div{{ attributes }}>
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+
+    <h3>Gite Services:</h3>
+    {% for key, giteServiceForm in form.giteServices %}
+        <button
+                data-action="live#action"
+                data-action-name="removeGiteService(index={{ key }})"
+                type="button"
+        >X</button>
+
+        {{ form_widget(giteServiceForm) }}
+    {% endfor %}
+
+    <button
+            data-action="live#action"
+            data-action-name="addGiteService"
+            type="button"
+    >+ Add GiteService</button>
+
+    <button type="submit" >Save</button>
+    {{ form_end(form) }}
+</div>

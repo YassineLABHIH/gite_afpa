@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit EquipementExt{% endblock %}
+
+{% block body %}
+    <h1>Edit EquipementExt</h1>
+
+    {{ include('equipement_ext/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_equipement_ext_index') }}">back to list</a>
+
+    {{ include('equipement_ext/_delete_form.html.twig') }}
+{% endblock %}

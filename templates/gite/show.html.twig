@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gite{% endblock %}
+
+{% block body %}
+    <h1>Gite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gite.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ gite.title }}</td>
+            </tr>
+            <tr>
+                <th>Surface</th>
+                <td>{{ gite.surface }}</td>
+            </tr>
+            <tr>
+                <th>NbrRoom</th>
+                <td>{{ gite.nbrRoom }}</td>
+            </tr>
+            <tr>
+                <th>NbrBed</th>
+                <td>{{ gite.nbrBed }}</td>
+            </tr>
+            <tr>
+                <th>IsAnimalAllowed</th>
+                <td>{{ gite.isAnimalAllowed ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>AnimalPrice</th>
+                <td>{{ gite.animalPrice }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ gite.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_gite_index') }}">back to list</a>
+
+    <a href="{{ path('app_gite_edit', {'id': gite.id}) }}">edit</a>
+
+    {{ include('gite/_delete_form.html.twig') }}
+{% endblock %}
