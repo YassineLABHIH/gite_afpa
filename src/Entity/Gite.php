@@ -50,7 +50,7 @@ class Gite
     #[ORM\ManyToMany(targetEntity: EquipementInt::class, inversedBy: 'gites')]
     private Collection $EquipementInts;
 
-    #[ORM\OneToMany(mappedBy: 'gite', targetEntity: Photo::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'gite', targetEntity: Photo::class, cascade: ['persist'], orphanRemoval: true)]
     private Collection $photos;
 
     #[ORM\OneToMany(mappedBy: 'gite', targetEntity: GiteService::class, cascade: ['persist'], orphanRemoval: true)]

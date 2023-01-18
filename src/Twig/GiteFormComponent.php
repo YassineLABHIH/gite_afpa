@@ -37,4 +37,16 @@ class GiteFormComponent extends AbstractController
     {
         unset($this->formValues['giteServices'][$index]);
     }
+
+    #[LiveAction]
+    public function addPhoto()
+    {
+        $this->formValues['photos'][] = [];
+    }
+    
+    #[LiveAction]
+    public function removePhoto(#[LiveArg] int $index)
+    {
+        unset($this->formValues['photos'][$index]);
+    }
 }

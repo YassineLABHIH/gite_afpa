@@ -19,6 +19,23 @@
             type="button"
     >+ Add GiteService</button>
 
+    <h3>Photos:</h3>
+    {% for key, photoForm in form.photos %}
+        <button
+                data-action="live#action"
+                data-action-name="removePhoto(index={{ key }})"
+                type="button"
+        >X</button>
+
+        {{ form_widget(photoForm) }}
+    {% endfor %}
+
+    <button
+            data-action="live#action"
+            data-action-name="addPhoto"
+            type="button"
+    >+ Add Photo</button>
+
     <button type="submit" >Save</button>
     {{ form_end(form) }}
 </div>
