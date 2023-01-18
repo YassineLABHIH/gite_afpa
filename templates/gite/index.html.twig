@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Gite index
-{% endblock %}
+{% endblock title %}
 
 {% block body %}
 	<!-- Header-->
@@ -17,10 +17,8 @@
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-				<div class="col mb-5">
-
-					{% for gite in gites %}
-
+				{% for gite in gites %}
+					<div class="col mb-5">
 						<div
 							class="card h-100">
 							<!-- Product image-->
@@ -33,10 +31,19 @@
 									<!-- Product name-->
 									<h5 class="fw-bolder">{{ gite.title }}</h5>
 									<!-- Product price-->
-                                    
-                                    <div> <span class="text-muted">Surface : </span> {{ gite.surface }} m2</div>
-									<div> <span class="text-muted">Nombre de chambres : </span> {{ gite.nbrRoom }}</div>
-									<div> <span class="text-muted">Description : </span> {{ gite.description }}</div>
+									<div>
+										<span class="text-muted">Surface :
+										</span>
+										{{ gite.surface }}
+										m2</div>
+									<div>
+										<span class="text-muted">Nombre de chambres :
+										</span>
+										{{ gite.nbrRoom }}</div>
+									<div>
+										<span class="text-muted">Description :
+										</span>
+										{{ gite.description }}</div>
 								</div>
 							</div>
 							<!-- Product actions-->
@@ -46,13 +53,13 @@
 								</div>
 							</div>
 						</div>
-
-
-			{% else %}
-				<tr>
-					<td colspan="9">no records found</td>
-				</tr>
-		{% endfor %}
-	</tbody>
-</table>
-{% endblock %}
+					</div>
+				{% else %}
+					<tr>
+						<td colspan="9">no records found</td>
+					</tr>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock body%}
