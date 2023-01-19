@@ -34,7 +34,7 @@ class ServiceController extends AbstractController
             return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('service/new.html.twig', [
+        return $this->render('service/new.html.twig', [
             'service' => $service,
             'form' => $form,
         ]);

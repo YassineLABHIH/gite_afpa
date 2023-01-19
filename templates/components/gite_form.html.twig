@@ -1,39 +1,30 @@
-<div{{attributes}} class="container">
+<div{{attributes}} class="container col-8">
+	{{ form_start(form) }}
+	{{ form_row(form.title) }}
+	{{ form_row(form.surface) }}
+	{{ form_row(form.nbrRoom) }}
+	{{ form_row(form.nbrBed) }}
+	{{ form_row(form.isAnimalAllowed) }}
+	{{ form_row(form.animalPrice) }}
+	{{ form_row(form.description) }}
+	{{ form_row(form.EquipementInts) }}
+	{{ form_row(form.equipementExts) }}
+	{{ form_row(form.contact) }}
+	
+	<h5>Services :</h5>
+	{% for key, giteServiceForm in form.giteServices %}
+		<button data-action="live#action" data-action-name="removeGiteService(index={{ key }})" type="button">X</button>
+		{{ form_widget(giteServiceForm) }}
+	{% endfor %}
+	<button data-action="live#action" data-action-name="addGiteService" type="button" class="mb-3">Ajouter un service supplémentaire</button>
 
-	<div class="col-6">
+	<h5>Photos :</h5>
+	{% for key, photoForm in form.photos %}
+		<button data-action="live#action" data-action-name="removePhoto(index={{ key }})" type="button">X</button>
+		{{ form_widget(photoForm) }}
+	{% endfor %}
 
-
-		{{ form_start(form) }}
-		{{ form_row(form.title) }}
-		{{ form_row(form.surface) }}
-		{{ form_row(form.nbrRoom) }}
-		{{ form_row(form.nbrBed) }}
-		{{ form_row(form.isAnimalAllowed) }}
-		{{ form_row(form.animalPrice) }}
-		{{ form_row(form.description) }}
-                {{ form_row(form.EquipementInts) }}
-                {{ form_row(form.equipementExts) }}
-                {{ form_row(form.contact) }}
-	</div>
-
-	<div class="col-6">
-		<h5>Services:</h5>
-		{% for key, giteServiceForm in form.giteServices %}
-			<button data-action="live#action" data-action-name="removeGiteService(index={{ key }})" type="button">X</button>
-			{{ form_widget(giteServiceForm) }}
-		{% endfor %}
-		<button data-action="live#action" data-action-name="addGiteService" type="button">+ Add GiteService</button>
-
-		<h3>Photos:</h3>
-		{% for key, photoForm in form.photos %}
-			<button data-action="live#action" data-action-name="removePhoto(index={{ key }})" type="button">X</button>
-			{{ form_widget(photoForm) }}
-		{% endfor %}
-
-		<button data-action="live#action" data-action-name="addPhoto" type="button">+ Add Photo</button>
-
-		<button type="submit">Save</button>
-		{{ form_end(form) }}
-
-	</div>
+	<button data-action="live#action" data-action-name="addPhoto" type="button" class="mb-3">Ajouter une photo supplémentaire</button><br>
+	<button type="submit">Enregistrer</button>
+	{{ form_end(form) }}
 </div>
