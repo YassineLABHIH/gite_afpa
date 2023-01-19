@@ -5,9 +5,9 @@
 
 {% block body %}
 
-	<div class="container col-6">
+	.<div class="container">
 
-		<h1 class="mb-3">S'inscrire en tant que propriétaire</h1><hr>
+		<h1 class="mb-3">S'inscrire en tant qu'utilisateur</h1><hr>
 
 		{{ form_start(registrationForm) }}
 		{{ form_row(registrationForm.email) }}
@@ -18,7 +18,7 @@
 
 		<button type="submit" class="btn">Register</button>
 
-		<a class="dropdown-item" href="{{path( 'app_register_user')}}">Vous êtes utilisateur ?</a>
+		<a class="dropdown-item" href="{{path( 'app_register')}}">Vous êtes propriétaire ?</a>
 
 
 	</div>
