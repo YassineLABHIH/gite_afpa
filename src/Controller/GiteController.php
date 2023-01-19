@@ -24,6 +24,15 @@ class GiteController extends AbstractController
         ]);
     }
 
+    #[Route('/giteowner', name: 'app_gite_owner', methods: ['GET'])]
+    public function giteowner(GiteRepository $giteRepository): Response
+    {
+        return $this->render('gite/giteOwner.html.twig', [
+            'gites' => $giteRepository->findBy()  
+        ]);
+    }
+
+
     #[
         Route('/new', name: 'app_gite_new', methods: ['GET', 'POST']),
         IsGranted("ROLE_OWNER")
@@ -97,4 +106,6 @@ class GiteController extends AbstractController
 
         return $this->redirectToRoute('app_gite_index', [], Response::HTTP_SEE_OTHER);
     }
+
+   
 }
