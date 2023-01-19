@@ -1,4 +1,4 @@
-<div{{attributes}} class="container col-8">
+<div{{attributes}} class="container col-8 py-5">
 	{{ form_start(form) }}
 	{{ form_row(form.title) }}
 	{{ form_row(form.surface) }}
@@ -13,18 +13,18 @@
 	
 	<h5>Services :</h5>
 	{% for key, giteServiceForm in form.giteServices %}
-		<button data-action="live#action" data-action-name="removeGiteService(index={{ key }})" type="button">X</button>
+		<button data-action="live#action" data-action-name="removeGiteService(index={{ key }})" type="button"  class="btn btn-primary">Supprimer l'ajout de service</button>
 		{{ form_widget(giteServiceForm) }}
 	{% endfor %}
-	<button data-action="live#action" data-action-name="addGiteService" type="button" class="mb-3">Ajouter un service supplémentaire</button>
+	<button data-action="live#action" data-action-name="addGiteService" type="button" class="mb-3"  class="btn btn-primary">Ajouter un service supplémentaire</button>
 
 	<h5>Photos :</h5>
 	{% for key, photoForm in form.photos %}
-		<button data-action="live#action" data-action-name="removePhoto(index={{ key }})" type="button">X</button>
+		<button data-action="live#action" data-action-name="removePhoto(index={{ key }})" type="button"  class="btn btn-primary">supprimer l'ajout de photo</button>
 		{{ form_widget(photoForm) }}
 	{% endfor %}
 
-	<button data-action="live#action" data-action-name="addPhoto" type="button" class="mb-3">Ajouter une photo supplémentaire</button><br>
-	<button type="submit">Enregistrer</button>
+	<button data-action="live#action" data-action-name="addPhoto" type="button" class="mb-3"  class="btn btn-primary">Ajouter une photo supplémentaire</button><br>
+	<button type="submit" class="btn btn-success">Enregistrer</button>
 	{{ form_end(form) }}
 </div>
