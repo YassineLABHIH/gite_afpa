@@ -28,7 +28,8 @@ class GiteController extends AbstractController
     public function giteowner(GiteRepository $giteRepository): Response
     {
         return $this->render('gite/giteOwner.html.twig', [
-            'gites' => $giteRepository->findBy()  
+            'gites' => $giteRepository->findBy(
+                ['owner' => $this->getUser()])  
         ]);
     }
 

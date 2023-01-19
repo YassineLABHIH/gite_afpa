@@ -35,8 +35,6 @@ class OwnerController extends AbstractController
 
             $userRepository->save($contact, true);
 
-
-            dd($contact);
         }
         return $this->render('owner/index.html.twig', [
             'form' => $form,
