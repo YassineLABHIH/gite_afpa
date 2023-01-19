@@ -7,6 +7,7 @@ use App\Entity\GiteService;
 use App\Entity\Photo;
 use App\Form\GiteType;
 use App\Repository\GiteRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,11 @@ class GiteController extends AbstractController
             'gites' => $giteRepository->findAll(),
         ]);
     }
-    #[Route('/new', name: 'app_gite_new', methods: ['GET', 'POST'])]
+
+    #[
+        Route('/new', name: 'app_gite_new', methods: ['GET', 'POST']),
+        IsGranted("ROLE_OWNER")
+    ]
     public function new_live(Request $request, GiteRepository $giteRepository)
     {
         $gite = new Gite();
@@ -48,7 +53,10 @@ class GiteController extends AbstractController
     }
 
 
-    #[Route('/{id}', name: 'app_gite_show', methods: ['GET'])]
+    #[
+        Route('/{id}', name: 'app_gite_show', methods: ['GET']),
+        IsGranted("ROLE_USER")
+    ]
     public function show(Gite $gite): Response
     {
         return $this->render('gite/show.html.twig', [
@@ -56,7 +64,10 @@ class GiteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_gite_edit', methods: ['GET', 'POST'])]
+    #[
+        Route('/{id}/edit', name: 'app_gite_edit', methods: ['GET', 'POST']),
+        IsGranted("ROLE_OWNER")
+    ]
     public function edit(Request $request, Gite $gite, GiteRepository $giteRepository): Response
     {
         $form = $this->createForm(GiteType::class, $gite);
@@ -74,7 +85,10 @@ class GiteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_gite_delete', methods: ['POST'])]
+    #[
+        Route('/{id}', name: 'app_gite_delete', methods: ['POST']),
+        IsGranted("ROLE_OWNER")
+    ]
     public function delete(Request $request, Gite $gite, GiteRepository $giteRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $gite->getId(), $request->request->get('_token'))) {
