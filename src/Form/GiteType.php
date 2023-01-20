@@ -10,6 +10,7 @@ use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -46,13 +47,21 @@ class GiteType extends AbstractType
             ->add('nbrBed', NumberType::class, [
                 'label' => 'Nombre de lit'
             ])
-            ->add('isAnimalAllowed')
-            ->add('animalPrice')
-            ->add('description')
+            ->add('isAnimalAllowed', CheckboxType::class, [
+                'label' => 'Animaux autorisés ?'
+            ])
+
+            ->add('animalPrice', NumberType::class, [
+                'label' => 'Si oui, prix en supplément animal'
+            ])
+
+            ->add('description', TextType::class, [
+                'label' => "Description du gite"
+            ])
 
             ->add('contact', EntityType::class, [
                 'class' => User::class,
-                'label' => 'Si vous ne voulez pas être contacté, veuillez choisir un contact déjà enregistré',
+                'label' => 'Si vous ne voulez pas être contacté directement, veuillez choisir un contact déjà enregistré',
                 'query_builder' => function (UserRepository $er) use ($current_user) {
                     return $er->createQueryBuilder('u')
                         ->andWhere('u.owner = :id_user')
@@ -61,10 +70,12 @@ class GiteType extends AbstractType
             ])
             ->add('equipementExts', EntityType::class, [
                 'class' => EquipementExt::class,
+                'label' => "Les équipements extérieurs",
                 'expanded' => true,
                 'multiple' => true
             ])
             ->add('EquipementInts', EntityType::class, [
+                'label' => "Les équipement intérieurs",
                 'class' => EquipementInt::class,
                 'expanded' => true,
                 'multiple' => true
