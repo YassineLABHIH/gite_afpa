@@ -12,6 +12,8 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -34,16 +36,23 @@ class GiteType extends AbstractType
 
 
         $builder
-            ->add('title')
+            ->add('title', TextType::class, [
+                'label' => "Nom du gite"
+            ])
             ->add('surface')
-            ->add('nbrRoom')
-            ->add('nbrBed')
+            ->add('nbrRoom', NumberType::class, [
+                'label' => 'Nombre de chambre'
+            ])
+            ->add('nbrBed', NumberType::class, [
+                'label' => 'Nombre de lit'
+            ])
             ->add('isAnimalAllowed')
             ->add('animalPrice')
             ->add('description')
 
             ->add('contact', EntityType::class, [
                 'class' => User::class,
+                'label' => 'Si vous ne voulez pas être contacté, veuillez choisir un contact déjà enregistré',
                 'query_builder' => function (UserRepository $er) use ($current_user) {
                     return $er->createQueryBuilder('u')
                         ->andWhere('u.owner = :id_user')
