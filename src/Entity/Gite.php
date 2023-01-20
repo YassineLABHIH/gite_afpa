@@ -56,12 +56,16 @@ class Gite
     #[ORM\OneToMany(mappedBy: 'gite', targetEntity: GiteService::class, cascade: ['persist'], orphanRemoval: true)]
     private Collection $giteServices;
 
+    #[ORM\OneToMany(mappedBy: 'gite', targetEntity: Periode::class)]
+    private Collection $periodes;
+
     public function __construct()
     {
         $this->equipementExts = new ArrayCollection();
         $this->EquipementInts = new ArrayCollection();
         $this->photos = new ArrayCollection();
         $this->giteServices = new ArrayCollection();
+        $this->periodes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -279,6 +283,36 @@ class Gite
             // set the owning side to null (unless already changed)
             if ($giteService->getGite() === $this) {
                 $giteService->setGite(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Periode>
+     */
+    public function getPeriodes(): Collection
+    {
+        return $this->periodes;
+    }
+
+    public function addPeriode(Periode $periode): self
+    {
+        if (!$this->periodes->contains($periode)) {
+            $this->periodes->add($periode);
+            $periode->setGite($this);
+        }
+
+        return $this;
+    }
+
+    public function removePeriode(Periode $periode): self
+    {
+        if ($this->periodes->removeElement($periode)) {
+            // set the owning side to null (unless already changed)
+            if ($periode->getGite() === $this) {
+                $periode->setGite(null);
             }
         }
 
