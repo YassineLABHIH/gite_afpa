@@ -34,6 +34,15 @@
 			{% endfor %}
 			<button data-action="live#action" data-action-name="addPhoto" type="button" class="btn btn-sm btn-primary">Ajouter</button><br>
 		</div>
+		<hr>
+		<div class="container mb-5">
+			<h3 class="mb-3 text-center">Periode</h3>
+			{% for key, periodeForm in form.periodes %}
+				{{ form_widget(periodeForm) }}
+				<button data-action="live#action" data-action-name="removePeriode(index={{ key }})" type="button" class="btn btn-sm btn-danger">Supprimer</button>
+			{% endfor %}
+			<button data-action="live#action" data-action-name="addPeriode" type="button" class="btn btn-sm btn-primary">Ajouter</button><br>
+		</div>
 		<div class="container text-center mt-3">
 			<button type="submit" class="btn btn-outline-light btn-lg">Ajouter le gite</button>
 		</div>

@@ -94,6 +94,13 @@ class GiteType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false,
             ])
+            
+            ->add('periodes', CollectionType::class, [
+                'entry_type' => PeriodeGiteType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ])
         ;
     }
 
