@@ -36,7 +36,7 @@
 		</div>
 		<hr>
 		<div class="container mb-5">
-			<h3 class="mb-3 text-center">Periode</h3>
+			<h3 class="mb-3 text-center">Periodes de location</h3>
 			{% for key, periodeForm in form.periodes %}
 				{{ form_widget(periodeForm) }}
 				<button data-action="live#action" data-action-name="removePeriode(index={{ key }})" type="button" class="btn btn-sm btn-danger">Supprimer</button>

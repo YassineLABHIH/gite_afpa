@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Periode;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,9 +14,29 @@ class PeriodeGiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('startAt')
-            ->add('endAt')
-            ->add('price')
+            ->add('startAt', DateTimeType::class, [
+                'placeholder' => [
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                    'hour' => 'Hour', 'minute' => 'Minute', 'second' => 'Second',
+                ],
+                'label' => 'Début de la location',
+            ],
+                
+                )
+                
+            ->add('endAt', DateTimeType::class, [
+                'placeholder' => [
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                    'hour' => 'Hour', 'minute' => 'Minute', 'second' => 'Second',
+                ],
+                'label' => 'Fin de la location',
+            ],)
+
+
+            ->add('price', NumberType::class, [
+                
+                'label' => 'Prix hebdomadaire',
+            ],)
         ;
     }
 
