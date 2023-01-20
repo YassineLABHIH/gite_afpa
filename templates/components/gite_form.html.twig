@@ -1,35 +1,48 @@
 <div class="m-5 ">
 
-	<div{{attributes}} class="container col-4 p-5 bg-light-subtle">
-		{{ form_start(form) }}
-		{{ form_row(form.title) }}
-		{{ form_row(form.surface) }}
-		{{ form_row(form.nbrRoom) }}
-		{{ form_row(form.nbrBed) }}
-		{{ form_row(form.isAnimalAllowed) }}
-		{{ form_row(form.animalPrice) }}
-		{{ form_row(form.description) }}
-		{{ form_row(form.EquipementInts) }}
-		{{ form_row(form.equipementExts) }}
-		{{ form_row(form.contact) }}
+	<div{{attributes}} class="container col-4 card text-white bg-dark bg-gradient mb-3 p-5">
 
-		<h5>Services :</h5>
-		{% for key, giteServiceForm in form.giteServices %}
-			{{ form_widget(giteServiceForm) }}
-			<button data-action="live#action" data-action-name="removeGiteService(index={{ key }})" type="button" class="btn btn-sm btn-danger">Supprimer</button>
-
-		{% endfor %}
-		<button data-action="live#action" data-action-name="addGiteService" type="button" class="btn btn-sm btn-primary">Ajouter</button>
-
-		<h5>Photos :</h5>
-		{% for key, photoForm in form.photos %}
-			{{ form_widget(photoForm) }}
-			<button data-action="live#action" data-action-name="removePhoto(index={{ key }})" type="button" class="btn btn-sm btn-danger">Supprimer</button>
-		{% endfor %}
-		<button data-action="live#action" data-action-name="addPhoto" type="button" class="btn btn-sm btn-primary">Ajouter</button><br>
-		<div class="container text-center mt-3">
-			<button type="submit" class="btn btn-success btn-lg">Ajouter</button>
+		<div class="container mb-5">
+			<h3 class="mb-3 text-center">Informations</h3>
+			{{ form_start(form) }}
+			{{ form_row(form.title) }}
+			{{ form_row(form.surface) }}
+			{{ form_row(form.nbrRoom) }}
+			{{ form_row(form.nbrBed) }}
+			{{ form_row(form.isAnimalAllowed) }}
+			{{ form_row(form.animalPrice) }}
+			{{ form_row(form.description) }}
+			{{ form_row(form.EquipementInts) }}
+			{{ form_row(form.equipementExts) }}
+			{{ form_row(form.contact) }}
 		</div>
+		<hr>
+		<div class="container mb-5">
+			<h3 class="mb-3 text-center">Services</h3>
+			{% for key, giteServiceForm in form.giteServices %}
+				{{ form_widget(giteServiceForm) }}
+				<button data-action="live#action" data-action-name="removeGiteService(index={{ key }})" type="button" class="btn btn-sm btn-danger">Supprimer</button>
+
+			{% endfor %}
+			<button data-action="live#action" data-action-name="addGiteService" type="button" class="btn btn-sm btn-primary">Ajouter</button>
+		</div>
+		<hr>
+		<div class="container mb-5">
+			<h3 class="mb-3 text-center">Photos</h3>
+			{% for key, photoForm in form.photos %}
+				{{ form_widget(photoForm) }}
+				<button data-action="live#action" data-action-name="removePhoto(index={{ key }})" type="button" class="btn btn-sm btn-danger">Supprimer</button>
+			{% endfor %}
+			<button data-action="live#action" data-action-name="addPhoto" type="button" class="btn btn-sm btn-primary">Ajouter</button><br>
+
+			</div>
+
+
+			<div class="container text-center mt-3">
+				<button type="submit" class="btn btn-outline-light btn-lg">Ajouter le gite</button>
+			</div>
+
+		
 		{{ form_end(form) }}
 	</div>
 </div>
